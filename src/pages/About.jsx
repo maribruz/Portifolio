@@ -1,27 +1,46 @@
-import { Link } from 'react-router-dom';
 import { siteConfig, orPlaceholder } from '../utils/siteConfig.js';
 
-export default function Home() {
-  return (
-    <section className="container section hero">
-      <div>
-        <p className="soft">{orPlaceholder(siteConfig.role, 'Cargo ou área de atuação')}</p>
-        <h1>{orPlaceholder(siteConfig.name, 'Seu nome')}</h1>
-        <p>{orPlaceholder(siteConfig.tagline, 'Frase de apresentação')}</p>
-        <p className="soft">{orPlaceholder(siteConfig.about, 'Pequena descrição sobre você')}</p>
+export default function About() {
+  const { about, education, institution, interests, goals, timeline } = siteConfig;
 
-        <div className="hero-buttons">
-          <Link to="/projetos" className="btn">Ver projetos</Link>
-          <Link to="/contato" className="btn btn-outline">Entrar em contato</Link>
+  return (
+    <section className="container section">
+      <h1>Sobre mim</h1>
+      <p className="soft">{orPlaceholder(about, 'Apresentação pessoal')}</p>
+
+      <div className="info-grid">
+        <div className="card">
+          <h3>Formação acadêmica</h3>
+          <p>{orPlaceholder(education, 'Formação')}</p>
+          <p className="soft">{orPlaceholder(institution, 'Instituição')}</p>
+        </div>
+        <div className="card">
+          <h3>Interesses na tecnologia</h3>
+          <p>{orPlaceholder(interests, 'Interesses')}</p>
+        </div>
+        <div className="card">
+          <h3>Objetivos profissionais</h3>
+          <p>{orPlaceholder(goals, 'Objetivos')}</p>
         </div>
       </div>
 
-      <div className="photo">
-        {siteConfig.photo ? (
-          <img src={siteConfig.photo} alt={`Foto de ${siteConfig.name}`} />
-        ) : (
-          <span className="soft">[Foto]</span>
+      <h2>Minha trajetória</h2>
+      <div className="timeline">
+        {timeline.length === 0 && (
+          <div className="timeline-item">
+            <span className="soft">[Período]</span>
+            <h3>[Cargo ou curso]</h3>
+            <p className="soft">[Empresa ou instituição]</p>
+          </div>
         )}
+
+        {timeline.map((item) => (
+          <div className="timeline-item" key={item.title + item.period}>
+            <span className="soft">{item.period}</span>
+            <h3>{item.title}</h3>
+            <p className="soft">{item.place}</p>
+          </div>
+        ))}
       </div>
     </section>
   );
