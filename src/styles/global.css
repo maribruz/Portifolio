@@ -1,0 +1,94 @@
+/* Cores do tema claro */
+:root {
+  --bg: #f5f0e8;
+  --card: #ffffff;
+  --text: #2c2527;
+  --text-soft: #6a6064;
+  --accent: #722f43;
+  --accent-dark: #421d2b;
+  --border: #e9dfd0;
+}
+
+/* Cores do tema escuro: só trocamos os valores */
+:root[data-theme='dark'] {
+  --bg: #1a1418;
+  --card: #241b20;
+  --text: #f5f0e8;
+  --text-soft: #c2b6b0;
+  --accent: #d79bae;
+  --accent-dark: #e9dfd0;
+  --border: #3a2c33;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Manrope', sans-serif;
+  line-height: 1.6;
+}
+
+h1,
+h2,
+h3 {
+  font-family: 'Fraunces', serif;
+}
+
+a {
+  color: var(--accent);
+}
+
+img {
+  max-width: 100%;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.section {
+  padding: 60px 0;
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 24px;
+  border-radius: 999px;
+  border: 1px solid var(--accent);
+  background: var(--accent);
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--accent);
+}
+
+/* Botão do tema (sol e lua) */
+.theme-toggle {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--card);
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.theme-toggle:hover {
+  transform: rotate(15deg);
+}
