@@ -92,3 +92,158 @@ img {
 .theme-toggle:hover {
   transform: rotate(15deg);
 }
+
+/* Menu */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+}
+
+.header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px;
+}
+
+.brand {
+  font-family: 'Fraunces', serif;
+  font-size: 1.3rem;
+  text-decoration: none;
+  color: var(--text);
+}
+
+.nav {
+  display: flex;
+  gap: 20px;
+}
+
+.nav a {
+  text-decoration: none;
+  color: var(--text-soft);
+}
+
+.nav a:hover,
+.nav a.active {
+  color: var(--accent);
+}
+
+.header-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.menu-button {
+  display: none;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--text);
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+/* Menu no celular */
+@media (max-width: 760px) {
+  .menu-button {
+    display: block;
+  }
+
+  .nav {
+    display: none;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    padding: 20px;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav.open {
+    display: flex;
+  }
+}
+
+/* Rodapé */
+.footer {
+  border-top: 1px solid var(--border);
+  padding: 30px 0;
+  color: var(--text-soft);
+}
+
+.footer-bar {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.social {
+  display: flex;
+  gap: 15px;
+}
+
+/* Home */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin: 10px 0;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.photo {
+  aspect-ratio: 4 / 5;
+  max-width: 340px;
+  width: 100%;
+  justify-self: center;
+  border-radius: 999px 999px 14px 14px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.soft {
+  color: var(--text-soft);
+}
+
+@media (max-width: 760px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Página 404 */
+.not-found {
+  text-align: center;
+}
+
+.not-found h1 {
+  font-size: 5rem;
+  color: var(--accent);
+}
