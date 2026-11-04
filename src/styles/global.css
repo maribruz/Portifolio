@@ -413,3 +413,46 @@ img {
   background: var(--border);
   font-size: 0.9rem;
 }
+
+/* Formulários */
+.form {
+  display: grid;
+  gap: 8px;
+  max-width: 520px;
+  margin: 30px 0 50px;
+}
+
+.form label {
+  margin-top: 10px;
+  font-weight: 600;
+}
+
+.form input,
+.form textarea {
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--text);
+  font: inherit;
+}
+
+.form button {
+  margin-top: 16px;
+  justify-self: start;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.error {
+  color: #c0392b;
+  font-size: 0.9rem;
+}
+
+.success {
+  color: #2e7d32;
+  font-weight: 600;
+}
