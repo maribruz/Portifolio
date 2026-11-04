@@ -1,14 +1,23 @@
 import { Link } from 'react-router-dom';
 import { siteConfig, orPlaceholder } from '../utils/siteConfig.js';
+import { useEffect, useState } from 'react';
 import { useRepos } from '../hooks/useGithub.js';
+import { getFeaturedNames } from '../services/featuredService.js';
 import ProjectCard from '../components/ui/ProjectCard.jsx';
 import ProjectSkeleton from '../components/ui/ProjectSkeleton.jsx';
 
 export default function Home() {
-  const { repos, loading, error } = useRepos();
+    const { repos, loading, error } = useRepos();
+  const [featuredNames, setFeaturedNames] = useState([]);
 
-  // Por enquanto, os 3 mais recentes. Na Etapa 6 o dashboard escolhe quais aparecem.
-  const featured = repos.slice(0, 3);
+  // Busca no Supabase os projetos escolhidos no painel
+  useEffect(() => {
+    getFeaturedNames().then(setFeaturedNames).catch(() => {});
+  }, []);
+
+  // Se nenhum foi escolhido, mostra os 3 mais recentes
+  const chosen = repos.filter((repo) => featuredNames.includes(repo.name));
+  const featured = chosen.length > 0 ? chosen : repos.slice(0, 3);
 
   return (
     <>
